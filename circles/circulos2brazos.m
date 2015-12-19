@@ -8,7 +8,6 @@ L1=0.111;
 L2=L1;
 L3=0.171;
 
-% Modelo del robot
 nb=8; 
 trunk.NB=nb;
 trunk.pitch = zeros(1,nb); % all revolute joints
@@ -60,88 +59,56 @@ for i = 1:nb/2
 end
 
 
-% Constantes de tiempo
+% Simulación del robot en 4 pasos
 Ts=0.02;
-T=4; % duración del movimiento
+T=1; % duración del movimiento
 
 % Conversión que aparece en el manual
 conversion=pi/180/209;
 conversion_left_arm=pi/180/209*[-1 0 0 0;0 1 0 0;0 0 -1 0;0 0 0 1];
 conversion_right_arm=pi/180/209*[1 0 0 0;0 1 0 0;0 0 -1 0;0 0 0 -1];
 
-% Posición inicial
-q0_left_arm=conversion_left_arm*[-18800; 2000; 0; -8800];
-q0_right_arm=conversion_right_arm*[18810;-2000; 1; 8801];
-
 % Puntos originales:
-q1_left_arm = conversion_left_arm*[-11000; 4500; 4000; -21000];
-q1_right_arm = conversion_right_arm*[11000; -4500; -4000; 21000];
+q1_left_arm =conversion_left_arm*[-12000; 1000; 1; -18000]; 
+q2_left_arm = conversion_left_arm*[-10000; 1000; 1; -20000];
+q3_left_arm = conversion_left_arm*[-8000; 1000; 1; -18000]; 
+q4_left_arm = conversion_left_arm*[-10000; 1000; 1; -16000]; 
 
-q2_left_arm = conversion_left_arm*[-500; 12500; 2000; -16000];
-q2_right_arm =conversion_right_arm*[500; -12500; -2000; 16000];
+q1_right_arm = conversion_right_arm*[12000; -1000; 1; 18000];
+q2_right_arm = conversion_right_arm*[10000; -1000; 1; 20000];
+q3_right_arm = conversion_right_arm*[8000; -1000; 1; 18000];
+q4_right_arm = conversion_right_arm*[10000; -1000; 1; 16000];
 
+% % Puntos aplicando la conversión correcta (IZQ:--++) (DERE:+---)
+% q1_left_arm = [12000; -1000; 1; -18000]*conversion; 
+% q2_left_arm = [10000; -1000; 1; -20000]*conversion;
+% q3_left_arm = [8000; -1000; 1; -18000]*conversion; 
+% q4_left_arm = [10000; -1000; 1; -16000]*conversion; 
+% 
+% q1_right_arm = [12000; 1000; -1;-18000]*conversion;
+% q2_right_arm = [10000; 1000; -1;-20000]*conversion;
+% q3_right_arm = [8000; 1000; -1; -18000]*conversion;
+% q4_right_arm = [10000;1000; -1; -16000]*conversion;
 
-q_right_arm_ini = interpolate_variable (Ts, T/8, q0_right_arm, q1_right_arm);
-q_left_arm_ini = interpolate_variable (Ts, T/8, q0_left_arm, q1_left_arm);
+q_left_points=[q1_left_arm q2_left_arm q3_left_arm q4_left_arm q1_left_arm];
+q_left=circulos(Ts,T,q_left_points);
 
-q_right_arm_med1 = interpolate_variable (Ts, T/16, q1_right_arm,q2_right_arm);
-q_left_arm_med1 = interpolate_variable (Ts, T/16, q1_left_arm,q2_left_arm);
-
-q_right_arm_med2 = interpolate_variable (Ts, T/16, q2_right_arm,q1_right_arm);
-q_left_arm_med2 = interpolate_variable (Ts, T/16, q2_left_arm,q1_left_arm);
-
-q_right_arm_med=[q_right_arm_med1,q_right_arm_med2];
-q_left_arm_med=[q_left_arm_med1,q_left_arm_med2];
-
-q_right_arm_med = replicate_vector (q_right_arm_med, 6);
-q_left_arm_med = replicate_vector (q_left_arm_med, 6);
-
-q_right_arm_fin = interpolate_variable (Ts, T/8, q1_right_arm,q0_right_arm);
-q_left_arm_fin = interpolate_variable (Ts, T/8, q1_left_arm,q0_left_arm );
-
-q_right_arm=[q_right_arm_ini,q_right_arm_med,q_right_arm_fin];
-q_left_arm=[q_left_arm_ini,q_left_arm_med,q_left_arm_fin];
-
-
-
-q=[q_left_arm(1,:);q_right_arm(1,:);q_left_arm(2,:);q_right_arm(2,:);q_left_arm(3,:);q_right_arm(3,:);q_left_arm(4,:);q_right_arm(4,:)];
+q=[q_left(1,:);q_left(1,:);q_left(2,:);-q_left(2,:);q_left(3,:);-q_left(3,:);q_left(4,:);q_left(4,:)];
 qd=diff(q,1,2)/Ts;
 qdd=diff(q,2,2)/(Ts*Ts);
 
 % Calculo de los pares en cada articulación
-for i=1:length(q)-2
+for i=1:T/Ts-2
     tau(:,i) = ID( trunk, q(:,i), qd(:,i), qdd(:,i));
 end
 
 % Simalación del movimiento
 jnt_vals=q';
-%drawmodel (trunk);
-%drawmodel(trunk,Ts, jnt_vals );
-
-% Gráficas de los posiciones de cada articulación
-time=0:Ts:length(q)*Ts-Ts;     %time vector for positions
-figure('Name','LEFT ARM LINK POSITIONS','NumberTitle','off')
-for ii=1:nb/2
-    subplot(2,2,ii);
-    plot(time,q(2*ii-1,:),'b');
-    %plot(time,range_q_right(ii,:)'*ones(1,length(time)),'r') % SIN HACER
-    title(['Joint ',num2str(ii)]);  
-    xlabel('[s]')
-    ylabel('[rad]')
-end
-   figure('Name','RIGHT ARM LINK POSITIONS','NumberTitle','off')
-for ii=1:nb/2
-    subplot(2,2,ii);
-    plot(time,q(2*ii,:),'b');
-    %plot(time,range_q_right(ii,:)'*ones(1,length(time)),'r') % SIN HACER
-    title(['Joint ',num2str(ii)]);
-    xlabel('[s]')
-    ylabel('[rad]') 
-end   
+drawmodel(trunk,Ts, jnt_vals );
 
 % Gráficas de los pares en cada articulación
-time = 0:Ts:length(q)*Ts-3*Ts;     %time vector for torques
-figure('Name','LEFT ARM LINKS TORQUES','NumberTitle','off')
+time=0:Ts:T-3*Ts;     %time vector for torques
+figure('Name','LEFT ARM LINK TORQUES','NumberTitle','off')
 for ii=1:nb/2
     subplot(2,2,ii);
     plot(time,tau(2*ii-1,:),'b');
@@ -160,28 +127,30 @@ for ii=1:nb/2
     ylabel('[N.m]') 
 end   
 
-% Calculo de las aceleraciones en cada articulación (Dinámica directa)
+% Calculo de las aceleraciones en cada articulación (Dinámica inversa)
 for i=1:T/Ts-2
     qdd_aba(:,i) = FDab( trunk, q(:,i), qd(:,i), tau(:,i));
     qdd_crba(:,i) = FDcrb( trunk, q(:,i), qd(:,i), tau(:,i));
 end
-% 
-% % Gráficas de las aceleraciones de cada articulación
-% time = 0:Ts:length(q)*Ts-3*Ts;     %time vector for torques
-% figure('Name','LEFT ARM LINK ACCELERATIONS','NumberTitle','off')
-% for ii=1:nb/2
-%     subplot(2,2,ii);
-%     plot(time,qdd(2*ii-1,:),'b',time,qdd_aba(2*ii-1,:),'r',time,qdd_crba(2*ii-1,:),'g');
-%     title(['Joint ',num2str(ii)]);  
-%     xlabel('[s]')
-%     ylabel('[m/s²]')
-% end
-%    figure('Name','RIGHT ARM LINK ACCELERATIONS','NumberTitle','off')
-% for ii=1:nb/2
-%     subplot(2,2,ii);
-%     plot(time,qdd(2*ii,:),'b',time,qdd_aba(2*ii,:),'r',time,qdd_crba(2*ii,:),'g');
-%     title(['Joint ',num2str(ii)]);
-%     xlabel('[s]')
-%     ylabel('[m/s²]') 
-% end   
+
+% Gráficas de las aceleraciones de cada articulación
+time=0:Ts:T-3*Ts;     %time vector for torques
+figure('Name','LEFT ARM LINK ACCELERATIONS','NumberTitle','off')
+for ii=1:nb/2
+    subplot(2,2,ii);
+    plot(time,qdd(2*ii-1,:),'b',time,qdd_aba(2*ii-1,:),'r',time,qdd_crba(2*ii-1,:),'g');
+    title(['Joint ',num2str(ii)]);  
+    xlabel('[s]')
+    ylabel('[m/s²]')
+    legend('qdd','qdd_a_b_a','qdd_c_r_b_a')
+end
+   figure('Name','RIGHT ARM LINK ACcELERATIONS','NumberTitle','off')
+for ii=1:nb/2
+    subplot(2,2,ii);
+    plot(time,qdd(2*ii,:),'b',time,qdd_aba(2*ii,:),'r',time,qdd_crba(2*ii,:),'g');
+    title(['Joint ',num2str(ii)]);
+    xlabel('[s]')
+    ylabel('[m/s²]')
+    legend('qdd','qdd_a_b_a','qdd_c_r_b_a')
+end   
 

@@ -1,0 +1,907 @@
+#Inventor V2.1 ascii
+# drawmodel output for anim8
+
+Separator {
+  ShapeHints {
+    vertexOrdering COUNTERCLOCKWISE
+    shapeType SOLID
+    faceType UNKNOWN_FACE_TYPE
+  }
+  Info { string "anim8: Tmax 0.98" }
+Separator {
+  Material { diffuseColor 0.7 0.1 0.1 ambientColor 0.35 0.05 0.05 }
+  Translation { translation 0 0 0.0865 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.283 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation 0 0 -0.1415 }
+  RotationXYZ { axis Z angle 1.5708 }
+  Cylinder { radius 0.012 height 0.078 }
+  RotationXYZ { axis Z angle -1.5708 }
+  Translation { translation 0 0 0.18 }
+  RotationXYZ { axis Z angle 1.5708 }
+  Cylinder { radius 0.012 height 0.222 }
+  RotationXYZ { axis Z angle -1.5708 }
+  Translation { translation 0 0 0.103 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.045 height 0.103 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Translation { translation 0 -0.035 0 }
+  Rotation { rotation 1.2092 -1.2092 -1.2092 2.094395 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = DEF interpDriver
+        Calculator {
+          a = ElapsedTime { } .timeOut
+          b 0.98
+          c 50
+          expression [
+            "ta = a - (b+4)*floor((a+2)/(b+4))",
+            "td = ta * (c-1)/b",
+            "ta = floor(td)",
+            "tb = ceil(td)",
+            "oa = ta<0 ? 0 : ta>c-1 ? c-1 : ta",
+            "ob = tb<0 ? 0 : tb>c-1 ? c-1 : tb",
+            "tc = td - oa",
+            "oc = tc<0 ? 0 : tc>1 ? 1 : tc" ]
+        } . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q1
+            GlobalField {
+              type "MFFloat" q1 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q1
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q1 .q1
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.8 0.45 0.1 ambientColor 0.4 0.22 0.05 }
+}
+Separator {
+  Translation { translation -0.035 0.125 -0.111 }
+  Rotation { rotation 3.14159 0 0 3.141593 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q2
+            GlobalField {
+              type "MFFloat" q2 [
+1.002103, 1.000542, 0.9960315, 0.9888271, 0.9791855,
+0.9673634, 0.9536172, 0.9382035, 0.9213789, 0.9033998,
+0.8845228, 0.8650046, 0.8451015, 0.8250701, 0.805167,
+0.7856487, 0.7667717, 0.7487927, 0.731968, 0.7165544,
+0.7028082, 0.690986, 0.6813445, 0.67414, 0.6696292,
+0.6680686, 0.6696292, 0.67414, 0.6813445, 0.690986,
+0.7028082, 0.7165544, 0.731968, 0.7487927, 0.7667717,
+0.7856487, 0.805167, 0.8250701, 0.8451015, 0.8650046,
+0.8845228, 0.9033998, 0.9213789, 0.9382035, 0.9536172,
+0.9673634, 0.9791855, 0.9888271, 0.9960315, 1.000542 ]
+            } .q2
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q2 .q2
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.8 0.7 0.1 ambientColor 0.4 0.35 0.05 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation 1.2092 -1.2092 1.2092 2.094395 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q6
+            GlobalField {
+              type "MFFloat" q6 [
+0.08350858, 0.08350858, 0.08350858, 0.08350858, 0.08350858,
+0.08350858, 0.08350858, 0.08350858, 0.08350858, 0.08350858,
+0.08350858, 0.08350858, 0.08350858, 0.08350858, 0.08350858,
+0.08350858, 0.08350858, 0.08350858, 0.08350858, 0.08350858,
+0.08350858, 0.08350858, 0.08350858, 0.08350858, 0.08350858,
+0.08350858, 0.08350858, 0.08350858, 0.08350858, 0.08350858,
+0.08350858, 0.08350858, 0.08350858, 0.08350858, 0.08350858,
+0.08350858, 0.08350858, 0.08350858, 0.08350858, 0.08350858,
+0.08350858, 0.08350858, 0.08350858, 0.08350858, 0.08350858,
+0.08350858, 0.08350858, 0.08350858, 0.08350858, 0.08350858 ]
+            } .q6
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q6 .q6
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.1 0.45 0.8 ambientColor 0.05 0.22 0.4 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation 1.2092 -1.2092 1.2092 2.094395 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q10
+            GlobalField {
+              type "MFFloat" q10 [
+-8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05,
+-8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05,
+-8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05,
+-8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05,
+-8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05,
+-8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05,
+-8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05,
+-8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05,
+-8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05,
+-8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05, -8.350858e-05 ]
+            } .q10
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q10 .q10
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.6 0.6 0.55 ambientColor 0.3 0.3 0.27 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation 0 0 0.0555 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.0075 height 0.111 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Translation { translation 0 0 0.111 }
+  Rotation { rotation 1.5708 0 0 1.570796 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q14
+            GlobalField {
+              type "MFFloat" q14 [
+-1.503154, -1.536675, -1.566092, -1.591575, -1.613295,
+-1.631424, -1.646132, -1.65759, -1.665971, -1.671444,
+-1.67418, -1.674351, -1.672128, -1.667681, -1.661182,
+-1.652802, -1.642711, -1.631082, -1.618084, -1.603888,
+-1.588667, -1.572591, -1.55583, -1.538557, -1.520941,
+-1.503154, -1.485368, -1.467752, -1.450479, -1.433718,
+-1.417642, -1.40242, -1.388225, -1.375227, -1.363598,
+-1.353507, -1.345127, -1.338628, -1.334181, -1.331958,
+-1.332129, -1.334865, -1.340338, -1.348718, -1.360177,
+-1.374885, -1.393014, -1.414734, -1.440217, -1.469633 ]
+            } .q14
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q14 .q14
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.8 0.7 0.1 ambientColor 0.4 0.35 0.05 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation 0 0.0855 0 }
+  Cylinder { radius 0.0075 height 0.171 }
+}
+}
+}
+}
+}
+Separator {
+  Translation { translation -0.035 0.125 0.111 }
+  Rotation { rotation 3.14159 0 0 3.141593 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q3
+            GlobalField {
+              type "MFFloat" q3 [
+1.002103, 1.000542, 0.9960315, 0.9888271, 0.9791855,
+0.9673634, 0.9536172, 0.9382035, 0.9213789, 0.9033998,
+0.8845228, 0.8650046, 0.8451015, 0.8250701, 0.805167,
+0.7856487, 0.7667717, 0.7487927, 0.731968, 0.7165544,
+0.7028082, 0.690986, 0.6813445, 0.67414, 0.6696292,
+0.6680686, 0.6696292, 0.67414, 0.6813445, 0.690986,
+0.7028082, 0.7165544, 0.731968, 0.7487927, 0.7667717,
+0.7856487, 0.805167, 0.8250701, 0.8451015, 0.8650046,
+0.8845228, 0.9033998, 0.9213789, 0.9382035, 0.9536172,
+0.9673634, 0.9791855, 0.9888271, 0.9960315, 1.000542 ]
+            } .q3
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q3 .q3
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.5 0.7 0.2 ambientColor 0.25 0.35 0.1 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation 1.2092 -1.2092 1.2092 2.094395 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q7
+            GlobalField {
+              type "MFFloat" q7 [
+-0.08350858, -0.08350858, -0.08350858, -0.08350858, -0.08350858,
+-0.08350858, -0.08350858, -0.08350858, -0.08350858, -0.08350858,
+-0.08350858, -0.08350858, -0.08350858, -0.08350858, -0.08350858,
+-0.08350858, -0.08350858, -0.08350858, -0.08350858, -0.08350858,
+-0.08350858, -0.08350858, -0.08350858, -0.08350858, -0.08350858,
+-0.08350858, -0.08350858, -0.08350858, -0.08350858, -0.08350858,
+-0.08350858, -0.08350858, -0.08350858, -0.08350858, -0.08350858,
+-0.08350858, -0.08350858, -0.08350858, -0.08350858, -0.08350858,
+-0.08350858, -0.08350858, -0.08350858, -0.08350858, -0.08350858,
+-0.08350858, -0.08350858, -0.08350858, -0.08350858, -0.08350858 ]
+            } .q7
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q7 .q7
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.6 0.25 0.8 ambientColor 0.3 0.12 0.4 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation 1.2092 -1.2092 1.2092 2.094395 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q11
+            GlobalField {
+              type "MFFloat" q11 [
+8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05,
+8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05,
+8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05,
+8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05,
+8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05,
+8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05,
+8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05,
+8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05,
+8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05,
+8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05, 8.350858e-05 ]
+            } .q11
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q11 .q11
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.55 0.4 0.25 ambientColor 0.27 0.2 0.12 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation 0 0 0.0555 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.0075 height 0.111 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Translation { translation 0 0 0.111 }
+  Rotation { rotation 1.5708 0 0 1.570796 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q15
+            GlobalField {
+              type "MFFloat" q15 [
+-1.503154, -1.536675, -1.566092, -1.591575, -1.613295,
+-1.631424, -1.646132, -1.65759, -1.665971, -1.671444,
+-1.67418, -1.674351, -1.672128, -1.667681, -1.661182,
+-1.652802, -1.642711, -1.631082, -1.618084, -1.603888,
+-1.588667, -1.572591, -1.55583, -1.538557, -1.520941,
+-1.503154, -1.485368, -1.467752, -1.450479, -1.433718,
+-1.417642, -1.40242, -1.388225, -1.375227, -1.363598,
+-1.353507, -1.345127, -1.338628, -1.334181, -1.331958,
+-1.332129, -1.334865, -1.340338, -1.348718, -1.360177,
+-1.374885, -1.393014, -1.414734, -1.440217, -1.469633 ]
+            } .q15
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q15 .q15
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.5 0.7 0.2 ambientColor 0.25 0.35 0.1 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation 0 0.0855 0 }
+  Cylinder { radius 0.0075 height 0.171 }
+}
+}
+}
+}
+}
+Separator {
+  Translation { translation -0.035 -0.055 -0.039 }
+  Rotation { rotation -1.2092 1.2092 1.2092 2.094395 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q4
+            GlobalField {
+              type "MFFloat" q4 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q4
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q4 .q4
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.1 0.6 0.1 ambientColor 0.05 0.3 0.05 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation 1.2092 -1.2092 1.2092 2.094395 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q8
+            GlobalField {
+              type "MFFloat" q8 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q8
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q8 .q8
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.8 0.5 0.8 ambientColor 0.4 0.25 0.4 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation 1.5708 0 0 1.570796 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q12
+            GlobalField {
+              type "MFFloat" q12 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q12
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q12 .q12
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.7 0.1 0.1 ambientColor 0.35 0.05 0.05 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation -0.0525 0 0 }
+  RotationXYZ { axis Z angle 1.5708 }
+  Cylinder { radius 0.0075 height 0.105 }
+  RotationXYZ { axis Z angle -1.5708 }
+}
+Separator {
+  Translation { translation -0.105 0 0 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q16
+            GlobalField {
+              type "MFFloat" q16 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q16
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q16 .q16
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.1 0.6 0.1 ambientColor 0.05 0.3 0.05 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation -0.0525 0 0 }
+  RotationXYZ { axis Z angle 1.5708 }
+  Cylinder { radius 0.0075 height 0.105 }
+  RotationXYZ { axis Z angle -1.5708 }
+}
+Separator {
+  Translation { translation -0.105 0 0 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q18
+            GlobalField {
+              type "MFFloat" q18 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q18
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q18 .q18
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.1 0.45 0.8 ambientColor 0.05 0.22 0.4 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation -1.5708 0 0 1.570796 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q20
+            GlobalField {
+              type "MFFloat" q20 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q20
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q20 .q20
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.8 0.5 0.8 ambientColor 0.4 0.25 0.4 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation -0.02 0 0 }
+  RotationXYZ { axis Z angle 1.5708 }
+  Cylinder { radius 0.0075 height 0.04 }
+  RotationXYZ { axis Z angle -1.5708 }
+  Translation { translation -0.015 0 0.015 }
+  Cube { width 0.01 height 0.045 depth 0.09 }
+}
+}
+}
+}
+}
+}
+}
+Separator {
+  Translation { translation -0.035 -0.055 0.039 }
+  Rotation { rotation -1.2092 1.2092 1.2092 2.094395 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q5
+            GlobalField {
+              type "MFFloat" q5 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q5
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q5 .q5
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.1 0.75 0.75 ambientColor 0.05 0.37 0.37 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation 1.2092 -1.2092 1.2092 2.094395 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q9
+            GlobalField {
+              type "MFFloat" q9 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q9
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q9 .q9
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.8 0.1 0.6 ambientColor 0.4 0.05 0.3 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation 1.5708 0 0 1.570796 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q13
+            GlobalField {
+              type "MFFloat" q13 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q13
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q13 .q13
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.8 0.45 0.1 ambientColor 0.4 0.22 0.05 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation -0.0525 0 0 }
+  RotationXYZ { axis Z angle 1.5708 }
+  Cylinder { radius 0.0075 height 0.105 }
+  RotationXYZ { axis Z angle -1.5708 }
+}
+Separator {
+  Translation { translation -0.105 0 0 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q17
+            GlobalField {
+              type "MFFloat" q17 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q17
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q17 .q17
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.1 0.75 0.75 ambientColor 0.05 0.37 0.37 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation -0.0525 0 0 }
+  RotationXYZ { axis Z angle 1.5708 }
+  Cylinder { radius 0.0075 height 0.105 }
+  RotationXYZ { axis Z angle -1.5708 }
+}
+Separator {
+  Translation { translation -0.105 0 0 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q19
+            GlobalField {
+              type "MFFloat" q19 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q19
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q19 .q19
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.6 0.25 0.8 ambientColor 0.3 0.12 0.4 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation -1.5708 0 0 1.570796 }
+  RotationXYZ { axis Z angle =
+    InterpolateFloat {
+      alpha = USE interpDriver . oc
+      input0 =
+        SelectOne {
+          type "MFFloat"
+          index = USE interpDriver .oa
+          input = DEF q21
+            GlobalField {
+              type "MFFloat" q21 [
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0,
+0, 0, 0, 0, 0 ]
+            } .q21
+        } .output
+      input1 =
+        SelectOne {
+          type  "MFFloat"
+          index = USE interpDriver .ob
+          input = USE q21 .q21
+        } .output
+    } .output
+  }
+Separator {
+  Material { diffuseColor 0.8 0.1 0.6 ambientColor 0.4 0.05 0.3 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation -0.02 0 0 }
+  RotationXYZ { axis Z angle 1.5708 }
+  Cylinder { radius 0.0075 height 0.04 }
+  RotationXYZ { axis Z angle -1.5708 }
+  Translation { translation -0.015 0 0.015 }
+  Cube { width 0.01 height 0.045 depth 0.09 }
+}
+}
+}
+}
+}
+}
+}
+}
+}

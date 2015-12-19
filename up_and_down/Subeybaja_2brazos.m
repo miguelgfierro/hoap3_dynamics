@@ -142,7 +142,7 @@ for ii=1:nb/2
     ylabel('torque [N.m]') 
 end   
 
-% Calculo de las aceleraciones en cada articulación (Dinámica inversa)
+% Calculo de las aceleraciones en cada articulación (Dinámica directa)
 for i=1:T/Ts-2
     qdd_aba(:,i) = FDab( trunk, q(:,i), qd(:,i), tau(:,i));
     qdd_crba(:,i) = FDcrb( trunk, q(:,i), qd(:,i), tau(:,i));

@@ -1,0 +1,123 @@
+#Inventor V2.1 ascii
+# drawmodel output for anim8
+
+Separator {
+  ShapeHints {
+    vertexOrdering COUNTERCLOCKWISE
+    shapeType SOLID
+    faceType UNKNOWN_FACE_TYPE
+  }
+  Info { string "anim8: Control j1.angle Range -3.14159 3.14159" }
+  Info { string "anim8: Control j2.angle Range -3.14159 3.14159" }
+  Info { string "anim8: Control j3.angle Range -3.14159 3.14159" }
+  Info { string "anim8: Control j4.angle Range -3.14159 3.14159" }
+  Info { string "anim8: Control j5.angle Range -3.14159 3.14159" }
+  Info { string "anim8: Control j6.angle Range -3.14159 3.14159" }
+  Info { string "anim8: Control j7.angle Range -3.14159 3.14159" }
+  Info { string "anim8: Control j8.angle Range -3.14159 3.14159" }
+Separator {
+  Material { diffuseColor 0.7 0.1 0.1 ambientColor 0.35 0.05 0.05 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.111 }
+  RotationXYZ { axis X angle -1.5708 }
+  RotationXYZ { axis Z angle 1.5708 }
+  Cylinder { radius 0.009 height 0.222 }
+  RotationXYZ { axis Z angle -1.5708 }
+}
+Separator {
+  Translation { translation 0.111 0 0 }
+  Rotation { rotation 0 -1.5708 0 1.570796 }
+  DEF j1 RotationXYZ { axis Z angle 0 }
+Separator {
+  Material { diffuseColor 0.8 0.45 0.1 ambientColor 0.4 0.22 0.05 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation 1.5708 0 0 1.570796 }
+  DEF j3 RotationXYZ { axis Z angle 0 }
+Separator {
+  Material { diffuseColor 0.5 0.7 0.2 ambientColor 0.25 0.35 0.1 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation 0 1.5708 0 1.570796 }
+  DEF j5 RotationXYZ { axis Z angle 0 }
+Separator {
+  Material { diffuseColor 0.1 0.75 0.75 ambientColor 0.05 0.37 0.37 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation 0 0 -0.0555 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.0075 height 0.111 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Translation { translation 0 0 -0.111 }
+  Rotation { rotation 1.5708 0 0 1.570796 }
+  DEF j7 RotationXYZ { axis Z angle 0 }
+Separator {
+  Material { diffuseColor 0.6 0.25 0.8 ambientColor 0.3 0.12 0.4 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation 0 -0.0855 0 }
+  Cylinder { radius 0.0075 height 0.171 }
+}
+}
+}
+}
+}
+Separator {
+  Translation { translation -0.111 0 0 }
+  Rotation { rotation 0 -1.5708 0 1.570796 }
+  DEF j2 RotationXYZ { axis Z angle 0 }
+Separator {
+  Material { diffuseColor 0.8 0.7 0.1 ambientColor 0.4 0.35 0.05 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation 1.5708 0 0 1.570796 }
+  DEF j4 RotationXYZ { axis Z angle 0 }
+Separator {
+  Material { diffuseColor 0.1 0.6 0.1 ambientColor 0.05 0.3 0.05 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Rotation { rotation 0 1.5708 0 1.570796 }
+  DEF j6 RotationXYZ { axis Z angle 0 }
+Separator {
+  Material { diffuseColor 0.1 0.45 0.8 ambientColor 0.05 0.22 0.4 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation 0 0 -0.0555 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.0075 height 0.111 }
+  RotationXYZ { axis X angle -1.5708 }
+}
+Separator {
+  Translation { translation 0 0 -0.111 }
+  Rotation { rotation 1.5708 0 0 1.570796 }
+  DEF j8 RotationXYZ { axis Z angle 0 }
+Separator {
+  Material { diffuseColor 0.8 0.5 0.8 ambientColor 0.4 0.25 0.4 }
+  RotationXYZ { axis X angle 1.5708 }
+  Cylinder { radius 0.012 height 0.018 }
+  RotationXYZ { axis X angle -1.5708 }
+  Translation { translation 0 -0.0855 0 }
+  Cylinder { radius 0.0075 height 0.171 }
+}
+}
+}
+}
+}
+}
