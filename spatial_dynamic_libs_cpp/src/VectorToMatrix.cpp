@@ -1,0 +1,65 @@
+//
+// Author: Miguel González-Fierro <mgpalaci@ing.uc3m.es>, (C) 2011
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+//
+///
+
+
+
+
+#include <iostream>
+#include "Matrix.h"
+
+using namespace std;
+
+
+
+void matrix::VectorToMatrix(float* dst, float *A, int SizeAr, float *B, int SizeBr)
+{	
+	for (i=0;i<SizeAr;i++)
+	{
+		for (j=0;j<SizeBr;j++)
+		{
+			dst[i*SizeAr + j] = A[i]*B[j];
+		}
+	}
+}
+float* matrix::VectorToMatrix(float *A, int SizeAr, float *B, int SizeBr)
+{	
+	float* A_res = new float [SizeAr*SizeBr];
+
+	for (i=0;i<SizeAr;i++)
+	{
+		for (j=0;j<SizeBr;j++)
+		{
+			A_res[i*SizeAr + j] = A[i]*B[j];
+		}
+	}
+	return A_res;
+}
+double* matrix::VectorToMatrix(double* A, int SizeAr, double* B, int SizeBr)
+{	
+	double* A_res = new double [SizeAr*SizeBr];
+
+	for (i=0;i<SizeAr;i++)
+	{
+		for (j=0;j<SizeBr;j++)
+		{
+			A_res[i*SizeBr + j] = A[i]*B[j];
+		}
+	}
+	return A_res;
+}
